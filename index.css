@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
+
+:root {
+  --back: #edf6f9;
+  --green: #06d6a0;
+  --purple: #6a0dad;
+  --savings-height: 100%;
+  --savings-color: rgba(106, 13, 173, 0.3);
+  --expense-height: 70%;
+  --expense-color: linear-gradient(
+    0deg,
+    rgba(94, 0, 255, 1) 0%,
+    rgba(106, 13, 173, 1) 100%
+  );
+  --button-color: linear-gradient(
+    0deg,
+    rgb(94, 0, 255, 1) 0%,
+    rgba(106, 13, 173, 1) 100%
+  );
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 2em;
+}
+h2 {
+  font-size: 1.75em;
+}
+h3 {
+  font-size: 1.25em;
+}
+h4 {
+  font-size: 1em;
+}
+
+body {
+  background: url(vincentiu-solomon-ln5drpv_ImI-unsplash.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  font-size: 65%;
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+main {
+  height: 500px;
+  width: 250px;
+  border-radius: 35px;
+  position: relative;
+}
+
+.content {
+  width: 85%;
+  height: 85%;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 0 35px 0 65px;
+  position: absolute;
+  right: 0;
+  z-index: 0;
+  box-shadow: -1px 1px 10px 1px rgba(0, 0, 0, 0.4);
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 15%;
+}
+
+.bar {
+  position: absolute;
+  box-shadow: -1px 1px 10px 1px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  bottom: 0;
+}
+
+.savingsBar {
+  background: var(--savings-color);
+  animation: savingsBarAni 1.5s ease-in;
+  border-radius: 35px;
+  height: var(--savings-height);
+}
+@keyframes savingsBarAni {
+  0% {
+    height: 0%;
+    opacity: 0;
+  }
+
+  100% {
+    width: 100%;
+    height: var(--savings-height);
+    opacity: 1;
+  }
+}
+
+.expenseBar {
+  background: var(--expense-color);
+  animation: expenseBarAni 2s ease-in 1.5s forwards;
+  border-radius: 0 0 35px 35px;
+  height: var(--expense-height);
+  opacity: 0;
+}
+@keyframes expenseBarAni {
+  0% {
+    height: 0%;
+    opacity: -1;
+  }
+
+  100% {
+    width: 100%;
+    height: var(--expense-height);
+    opacity: 1;
+  }
+}
+
+.tagText {
+  font-size: 0.75em;
+  width: 15%;
+  padding-top: 12%;
+}
+
+.expenseBar > .tagText {
+  padding-top: 2%;
+}
+
+input,
+button {
+  text-transform: uppercase;
+  margin: 5%;
+  padding: 5% 0;
+}
+
+input {
+  border: 1px solid lightgray;
+  text-align: center;
+  color: lightgray;
+  font-size: 1em;
+}
+
+button {
+  border-radius: 35px;
+  padding: 5%;
+  background: var(--expense-color);
+  border: none;
+  box-shadow: -1px 1px 10px 1px rgba(0, 0, 0, 0.4);
+  font-size: 0.75em;
+  color: #fff;
+}
+
+li {
+  list-style: none;
+}
+
+.savingsWrapper {
+  position: absolute;
+  bottom: 2.5%;
+  width: 100%;
+  line-height: 1.2;
+}
+
+.savingsAmount h3 {
+  font-size: 3em;
+}

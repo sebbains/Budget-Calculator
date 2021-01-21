@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <main>
+            <div class="savingsBar bar"><div class="tagText">savings</div></div>
+            <div class="expenseBar bar"><div class="tagText">expenses</div></div>
+            <div class="content">
+                <input type="number" placeholder="Enter budget"></input>
+                <div class="items">
+                   <label>Expense Items</label>
+                <ul class="itemList">
+                    <li>Item 1<span class="price">45.00</span></li>
+                    <li>Item 2<span class="price">5.00</span></li>
+                    <li>Item 3<span class="price">99.00</span></li>
+                </ul> 
+                </div>
+                <div class="adjustItems">
+                    <input type="text" placeholder="item name"></input>
+                    <input type="number" placeholder="price"></input>
+                    <button>add item</button>
+                </div>
+            </div>
+            <div class="savingsWrapper">
+                <div class="savingsTitle">
+                    <h4>Remaining money</h4>
+                </div>
+                <div class="savingsAmount">
+                  <h3>£2,500.00</h3>  
+                </div>
+            </div>
+        </main>
+        <script src="index.js"></script>
+    </body>
+</html>
