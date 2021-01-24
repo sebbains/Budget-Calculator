@@ -4,17 +4,12 @@
   --back: #edf6f9;
   --green: #06d6a0;
   --purple: #6a0dad;
-  --savings-height: 100%;
+  --savings-height: 0%;
   --savings-color: rgba(106, 13, 173, 0.3);
-  --expense-height: 70%;
+  --expense-height: 0%;
   --expense-color: linear-gradient(
     0deg,
     rgba(94, 0, 255, 1) 0%,
-    rgba(106, 13, 173, 1) 100%
-  );
-  --button-color: linear-gradient(
-    0deg,
-    rgb(94, 0, 255, 1) 0%,
     rgba(106, 13, 173, 1) 100%
   );
 }
@@ -61,6 +56,12 @@ main {
   width: 250px;
   border-radius: 35px;
   position: relative;
+  transition: all 1s ease-in;
+}
+
+.warning {
+  box-shadow: 0 0 25px 5px rgb(255, 0, 0);
+  transition: all 4s ease-in;
 }
 
 .content {
@@ -77,7 +78,6 @@ main {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  /* padding: 15%; */
 }
 
 .bar {
@@ -85,63 +85,46 @@ main {
   box-shadow: -1px 1px 10px 1px rgba(0, 0, 0, 0.4);
   width: 100%;
   bottom: 0;
+  opacity: 0;
+  transition: all 2s ease-in;
 }
 
 .savingsBar {
-  background: var(--savings-color);
-  animation: savingsBarAni 1.5s ease-in;
-  border-radius: 35px;
   height: var(--savings-height);
-}
-@keyframes savingsBarAni {
-  0% {
-    height: 0%;
-    opacity: 0;
-  }
-
-  100% {
-    width: 100%;
-    height: var(--savings-height);
-    opacity: 1;
-  }
+  background: var(--savings-color);
 }
 
 .expenseBar {
-  background: var(--expense-color);
-  animation: expenseBarAni 2s ease-in 1.5s forwards;
-  border-radius: 0 0 35px 35px;
   height: var(--expense-height);
-  opacity: 0;
-}
-@keyframes expenseBarAni {
-  0% {
-    height: 0%;
-    opacity: -1;
-  }
-
-  100% {
-    width: 100%;
-    height: var(--expense-height);
-    opacity: 1;
-  }
+  background: var(--expense-color);
 }
 
 .tagText {
   font-size: 0.75em;
   width: 15%;
-  padding-top: 12%;
-}
-
-.expenseBar > .tagText {
   padding-top: 2%;
 }
 
 .addBudget {
-  border-radius: 35px;
+  border-radius: 5px;
+}
+
+.items {
+  width: 100%;
+}
+
+.itemList {
+  padding: 1em;
 }
 
 li {
   list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px #dfdfdf solid;
+  margin: 0.5em;
 }
 
 .adjustItems {
@@ -150,7 +133,7 @@ li {
 }
 
 .addItem {
-  border-radius: 35px 0 0 35px;
+  border-radius: 5px 0 0 5px;
   flex: 2.5;
 }
 
@@ -161,7 +144,6 @@ li {
 input,
 button {
   text-transform: uppercase;
-  /* margin: 5%; */
   padding: 5% 0;
 }
 
@@ -173,11 +155,14 @@ input {
   font-size: 0.75em;
   width: 80%;
   color: black;
-  /* border-radius: 15px; */
+}
+
+.updateItem {
+  border-radius: 5px 0 0 5px;
 }
 
 button {
-  border-radius: 0 35px 35px 0;
+  border-radius: 0 5px 5px 0;
   padding: 5%;
   background: var(--expense-color);
   border: none;
@@ -191,8 +176,11 @@ button {
   bottom: 2.5%;
   width: 100%;
   line-height: 1.2;
+  transition: all 3s;
+  opacity: 0;
 }
 
 .savingsAmount h3 {
   font-size: 3em;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 1));
 }
