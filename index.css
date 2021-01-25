@@ -157,8 +157,31 @@ input {
   color: black;
 }
 
+.edit {
+  color: #000;
+}
+
+.edit:hover {
+  color: #f19f41;
+  cursor: pointer;
+}
+
+.delete {
+  color: #000;
+}
+
+.delete:hover {
+  color: #790e00;
+  cursor: pointer;
+}
+
 .updateItem {
   border-radius: 5px 0 0 5px;
+  flex: 2;
+}
+
+.updatePrice {
+  flex: 1;
 }
 
 button {

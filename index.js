@@ -17,19 +17,22 @@ const button = document.querySelector('.updateSubmit');
 const expenseBar = document.querySelector('.expenseBar');
 const savingsBar = document.querySelector('.savingsBar');
 // set totals
-let budget = 0;
+let budget = JSON.parse(localStorage.getItem('budget')) || null;
 let expensesTotal = 0;
+let editIndex;
 // pull local expenses or initialise empty expenses array
 const expenses = JSON.parse(localStorage.getItem('expenses')) || [];
 
 // update budget
 function updateBudget(){
-    // set budget
+    // set budget value
     budget = budgetInput.value;
     // update css expense bar height variable
     document.documentElement.style.setProperty('--savings-height', '100%');
     // update expenses and show bars
     updateExpenseTotal();
+    // save to local
+    localStorage.setItem('budget', JSON.stringify(budget));
 }
 
 // add item or update existing
@@ -42,11 +45,18 @@ function updateItem(){
         name,
         price
     }
-    // add to expenses array
-    expenses.push(expense);
+    // edit if global index is set
+    if (editIndex){
+        // overwrite item at provided index 
+        expenses[editIndex] = expense;
+        editIndex = null;
+    }else{
+        // add new item to expenses array
+        expenses.push(expense);
+    }
     // update html list
     updateList(expenses, expenseItems);
-    //save to local
+    // save to local
     localStorage.setItem('expenses', JSON.stringify(expenses));
     // clear inputs
     expenseNameInput.value = "";
@@ -111,6 +121,8 @@ function updateExpenseTotal(){
     }
     // update remaining money
     updateRemainingMoney();
+    // refresh icon listeners
+    addIconListeners();
 }
 
 function deleteListItem(itemIndex){
@@ -126,6 +138,16 @@ function deleteListItem(itemIndex){
     addIconListeners();
 }
 
+function editListItem(itemIndex){
+    // grab item from list
+    const {name, price} = expenses[itemIndex];
+    // populate inputs
+    expenseNameInput.value = name;
+    expensePriceInput.value = price;
+    // set global index for next button click
+    editIndex = itemIndex;
+}
+
 function addIconListeners(){
     // grab all populated list icons
     const allPopListItems = [...document.querySelectorAll('li')];
@@ -135,7 +157,7 @@ function addIconListeners(){
         const liIndex = e.target.parentNode.parentNode.dataset.index;
         if (e.target.classList.contains("edit")){
             // run edit function
-            console.log("edit clicked", liIndex);
+            editListItem(liIndex);
         }else if(e.target.classList.contains("delete")){
             // run delete function
             deleteListItem(liIndex);
@@ -160,3 +182,5 @@ button.addEventListener('click', updateItem);
 // populate items on page load and add listeners
 updateList(expenses, expenseItems);
 addIconListeners();
+// pull budget on page load
+budgetInput.value = budget;
