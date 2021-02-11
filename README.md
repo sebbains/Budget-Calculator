@@ -26,6 +26,8 @@ This week's challenge (20th Jan 2021) was to wire up a budget calculator and sty
 
 [![Scrimba Weekly Web Dev Challenge Live](http://img.youtube.com/vi/_vu1di3lONFE/0.jpg)](https://www.youtube.com/watch?v=vu1di3lONFE&t=1380s)
 
+[![Scrimba Weekly Web Dev Challenge Live](http://img.youtube.com/vi/vu1di3lONFE/0.jpg)](https://www.youtube.com/watch?v=vu1di3lONFE)
+
 ### Built on
 
 - HTML5
